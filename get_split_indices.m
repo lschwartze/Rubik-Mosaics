@@ -1,3 +1,4 @@
+%calculate where to slice the picture to calculate current face.
 function [lef, rig, bot, top] = get_split_indices(loc, direction, w)
 % lef = mod(3*i-2,MAX_WIDTH);
 % rig = mod(3*i-2,MAX_WIDTH)+2;

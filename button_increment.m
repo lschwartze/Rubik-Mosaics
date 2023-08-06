@@ -1,3 +1,4 @@
+%handles button increments
 function button_increment(ButtonH, EventData)
 handles = guidata(ButtonH);
 handles.num = mod(handles.num + 1, 100);

@@ -1,3 +1,4 @@
+%pad image with white pixels along the shorter dimensions
 function img = pad_img(img, MAX_WIDTH)
 [a,b,~] = size(img);
 padding = [(MAX_WIDTH-a)/2, (MAX_WIDTH-b)/2];

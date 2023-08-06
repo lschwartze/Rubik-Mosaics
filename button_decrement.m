@@ -1,3 +1,4 @@
+%handles button decrements
 function button_decrement(ButtonH, EventData)
 handles = guidata(ButtonH);
 handles.num = mod(handles.num - 1, 100);

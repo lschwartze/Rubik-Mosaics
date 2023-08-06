@@ -15,6 +15,7 @@ COLORS = [WHITE, YELLOW, GREEN, BLUE, RED, ORANGE];
 if isequal(file, 0)
     error("no file chosen");
 end
+
 %read image to array
 imagefilename = fullfile(path,file);
 img = imread(imagefilename);
@@ -24,6 +25,7 @@ img = imread(imagefilename);
 resizer = MAX_WIDTH/max([a,b]);
 width = bankers_rule(a*resizer);
 length = bankers_rule(b*resizer);
+
 %padding
 img = imresize(img, [width, length]);
 img = pad_img(img, MAX_WIDTH);
@@ -32,11 +34,14 @@ img = pad_img(img, MAX_WIDTH);
 for i=1:MAX_WIDTH
     for j=1:MAX_WIDTH
         tmp = img(i,j,:);
-        dist = vecnorm(COLORS - double(squeeze(tmp)));
+        %dist = vecnorm(COLORS - double(squeeze(tmp)));
+        %distance calculated via the redmean method. Euclidean metric is
+        %also possible.
+        dist = redmean(COLORS, double(squeeze(tmp)));
         [~, closest_match] = min(dist);
         img(i,j,:) = uint8(COLORS(:,closest_match));
     end
 end
-% figure(2)
-% imshow(imresize(img, 333, 'nearest'))
+figure(2)
+imshow(imresize(img, 333, 'nearest'))
 create_button(img, MAX_WIDTH)
