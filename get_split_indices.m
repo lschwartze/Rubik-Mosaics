@@ -16,7 +16,7 @@ if direction == "inc"
     lef = mod(lef+3, w);
     rig = lef+2;
 else
-    bot = mod(bot - 3*floor((lef-3)/w),w);
+    bot = mod(bot - 3*(floor(1/lef)),w);
     top = bot+2;
     lef = mod(lef-3, w);
     rig = lef+2;

@@ -4,7 +4,7 @@ handles = guidata(ButtonH);
 handles.num = mod(handles.num - 1, 100);
 [a,b,c,d] = get_split_indices(handles.loc, "dec", handles.w);
 handles.loc = [a,b,c,d];
-%disp(handles.loc)
+disp(handles.loc)
 guidata(ButtonH, handles);
 %display(handles.num)
 figure(1)
