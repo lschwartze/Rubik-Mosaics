@@ -20,19 +20,11 @@ end
 imagefilename = fullfile(path,file);
 img = imread(imagefilename);
 
-%resizing
 [a, b, ~] = size(img);
-resizer = MAX_WIDTH/max([a,b]);
-width = bankers_rule(a*resizer);
-length = bankers_rule(b*resizer);
-
-%padding
-img = imresize(img, [width, length]);
-img = pad_img(img, MAX_WIDTH);
 
 %overwrite each pixel with the color it's closest related to
-for i=1:MAX_WIDTH
-    for j=1:MAX_WIDTH
+for i=1:a
+    for j=1:b
         tmp = img(i,j,:);
         %dist = vecnorm(COLORS - double(squeeze(tmp)));
         %distance calculated via the redmean method. Euclidean metric is
@@ -42,6 +34,16 @@ for i=1:MAX_WIDTH
         img(i,j,:) = uint8(COLORS(:,closest_match));
     end
 end
+
+%resizing
+resizer = MAX_WIDTH/max([a,b]);
+width = bankers_rule(a*resizer);
+length = bankers_rule(b*resizer);
+
+%padding
+img = imresize(img, [width, length], 'nearest');
+img = pad_img(img, MAX_WIDTH);
+
 figure(2)
 imshow(imresize(img, 333, 'nearest'))
 create_button(img, MAX_WIDTH)
