@@ -2,11 +2,11 @@ close all
 %define constants
 MAX_WIDTH = 30;
 WHITE = [255; 255; 255];
-YELLOW = [255; 255; 0];
-GREEN = [0; 255; 0];
-BLUE = [0; 0; 255];
-RED = [255; 0; 0];
-ORANGE = [255; 165; 0];
+YELLOW = [239; 238; 0];
+GREEN = [51; 242; 42];
+BLUE = [1; 131; 219];
+RED = [247; 56; 12];
+ORANGE = [254; 180; 33];
 COLORS = [WHITE, YELLOW, GREEN, BLUE, RED, ORANGE];
 
 %get file
